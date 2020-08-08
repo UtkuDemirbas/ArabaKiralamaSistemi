@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html class="">
+<head class="no-js" lang="zxx">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--=== Favicon ===-->
+    <link rel="shortcut icon" href="~/Css/assets/img/favicon.ico" type="image/x-icon" />
+
+    <title>HFTTF - Rent A Car</title>
+
+    <!--=== Bootstrap CSS ===-->
+    <link href="~/Css/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!--=== Vegas Min CSS ===-->
+    <link href="~/Css/assets/css/plugins/vegas.min.css" rel="stylesheet">
+    <!--=== Slicknav CSS ===-->
+    <link href="~/Css/assets/css/plugins/slicknav.min.css" rel="stylesheet">
+    <!--=== Magnific Popup CSS ===-->
+    <link href="~/Css/assets/css/plugins/magnific-popup.css" rel="stylesheet">
+    <!--=== Owl Carousel CSS ===-->
+    <link href="~/Css/assets/css/plugins/owl.carousel.min.css" rel="stylesheet">
+    <!--=== Gijgo CSS ===-->
+    <link href="~/Css/assets/css/plugins/gijgo.css" rel="stylesheet">
+    <!--=== FontAwesome CSS ===-->
+    <link href="~/Css/assets/css/font-awesome.css" rel="stylesheet">
+    <!--=== Theme Reset CSS ===-->
+    <link href="~/Css/assets/css/reset.css" rel="stylesheet">
+    <!--=== Main Style CSS ===-->
+    <link href="~/Css/style.css" rel="stylesheet">
+    <!--=== Responsive CSS ===-->
+    <link href="~/Css/assets/css/responsive.css" rel="stylesheet">
+</head>
+<body>
+    <!--== Preloader Area Start ==-->
+    <div class="preloader">
+        <div class="preloader-spinner">
+            <div class="loader-content">
+                <img src="~/Css/assets/img/preloader.gif" alt="JSOFT">
+            </div>
+        </div>
+    </div>
+    <!--== Preloader Area End ==-->
+    <!--== Header Area Start ==-->
+    <header id="header-area" class="fixed-top">
+        <!--== Header Top Start ==-->
+        <div id="header-top" class="d-none d-xl-block">
+            <div class="container">
+                <div class="row">
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-left">
+                        <i class="fa fa-map-marker"></i>Turgutlu/Manisa
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-center">
+                        <i class="fa fa-mobile"></i> (0236) 314 10 10
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-center">
+                        <i class="fa fa-clock-o"></i> 7/24
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Social Icons Start ==-->
+                    <div class="col-lg-3 text-right">
+                        <div class="header-social-icons">
+                            <a href="https://www.instagram.com/hfttf2020/?hl=tr" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/hfttf.car" target="_blank"><i class="fa fa-facebook"></i></a>
+                        </div>
+                    </div>
+                    <!--== Social Icons End ==-->
+                </div>
+            </div>
+        </div>
+        <!--== Header Top End ==-->
+        <!--== Header Bottom Start ==-->
+        <div id="header-bottom">
+            <div class="container">
+                <div class="row">
+                    <!--== Logo Start ==-->
+                    <div class="col-lg-4">
+                        <a href="@Url.Action("WhereIsLocation", "WhereIsLocation")" class="logo">
+                            <img src="~/Css/assets/img/car.png" alt="JSOFT">
+                        </a>
+                    </div>
+                    <!--== Logo End ==-->
+                    <!--== Main Menu Start ==-->
+                    <div class="col-lg-8 d-none d-xl-block">
+                        <nav class="mainmenu alignright">
+                            <ul>
+                                <li><a id="anasayfa" href="@Url.Action("WhereIsLocation", "WhereIsLocation")">Anasayfa</a></li>
+                                <li><a href="@Url.Action("About","About")">Hakkımızda</a></li>
+                                <li><a href="@Url.Action("ListAllCar","Home")">Araçlar</a></li>
+
+                                <li><a href="@Url.Action("Contact","Contact")">İLETİŞİM</a></li>
+
+                                @if (Session["userID"] == null)
+                                {
+                                    <li>
+                                        <a href="#">GİRİŞ YAP</a>
+                                        <ul>
+                                            <li><a href="@Url.Action("LoginCompany","Login")">ŞİRKET GİRİŞİ</a></li>
+                                            <li><a href="@Url.Action("Login","Login")">MÜŞTERİ GİRİŞİ</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="#">PROFİLİM</a>
+                                        <ul>
+                                            <li><a href="@Url.Action("MyRentACar","Profile")">KİRALIK ARAÇLARIM</a></li>
+                                            <li><a href="@Url.Action("MyRezervation","Profile")">REZERVASYONLARIM</a></li>
+                                            <li><a href="@Url.Action("UpdateCustomer","Customer")">BİLGİLERİMİ GÜNCELLE</a></li>
+                                            <li><a href="@Url.Action("Quit","Customer")">ÇIKIŞ</a></li>
+                                        </ul>
+                                    </li>
+                                }
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--== Main Menu End ==-->
+                </div>
+            </div>
+        </div>
+        <!--== Header Bottom End ==-->
+    </header>
+
+    @RenderBody();
+
+    <!--== Footer Area Start ==-->
+    <section id="footer-area">
+        <!-- Footer Widget Start -->
+        <div class="footer-widget-area">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-4">
+                        <div class="single-footer-widget">
+                            <h2>HAKKIMIZDA</h2>
+                            <div class="widget-body">
+                                <img src="~/Css/assets/img/car.png" alt="JSOFT">
+                                <p>
+                                    Rent a car hizmeti yani araç kiralama hizmeti hem bireyler hemde kurumlar için giderek daha pazla önem kazanan bir ihtiyaç haline geldi.
+                                    Turizm algısının gelişmesi ve havalimanı sayısının artması ile hem uzun hem de kısa dönem araç kiralamada talep arttı.
+                                    HFTTF bu noktada kullanıcıya kiralık araba seçimini kolaylaştıran bir hizmet sağlıyor.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-4">
+                        <div class="single-footer-widget">
+                            <h2>SOSYAL MEDYA HESAPLARIMIZ</h2>
+                            <div class="widget-body" style="position:absolute;top:120px;left:100px;">
+                                <ul class="get-touch">
+                                    <li style="display:inline-block;margin-right:50px;"><a href="https://www.instagram.com/hfttf2020/?hl=tr"><i class="fa fa-instagram fa-5x"></i></a></li>
+                                    <li style="display:inline-block"><a href="https://www.facebook.com/hfttf.car"><i class="fa fa-facebook fa-5x"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-4">
+                        <div class="single-footer-widget">
+                            <h2>BİZE ULAŞIN</h2>
+                            <div class="widget-body">
+                                <p>Aşağıdaki bilgilerden kolaylıkla bizlere ulaşabilirsiniz...</p>
+
+                                <ul class="get-touch">
+                                    <li><i class="fa fa-map-marker"></i>Acarlar, Acarlar Mah. Şehit, Ali Karakuzu Sk. No:10, 45400 Turgutlu/Manisa</li>
+                                    <li><i class="fa fa-mobile"></i> (0236) 314 10 10</li>
+                                    <li><i class="fa fa-envelope"></i> ykselosman@hotmail.com</li>
+                                </ul>
+                                <a href="https://goo.gl/maps/weR7FJjiWiEQHc2d8" class="map-show" target="_blank">Show Location</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                </div>
+            </div>
+        </div>
+        <!-- Footer Widget End -->
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://hfttf.mcbu.edu.tr" target="_blank">Hasan Ferdi Turgutlu Teknoloji Fakültesi</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom End -->
+    </section>
+    <!--== Footer Area End ==-->
+    <!--== Scroll Top Area Start ==-->
+    <div class="scroll-top">
+        <img src="~/Css/assets/img/scroll-top.png" alt="JSOFT">
+    </div>
+
+    <!--=======================Javascript============================-->
+    <!--
+        <script>
+        $(document).ready(function(){
+            $("#anasayfa").click(function () {
+                if(@Session["userID"]==null){
+
+                    $(this).attr("href",@Url.Action("ListCars", "Admin"))
+                }
+                else{
+                    $(this).attr("href",@Url.Action("Login", "Login"))
+                }
+            });
+        });
+
+    </script>
+    -->
+    <!--=== Jquery Min Js ===-->
+    <script src="~/Css/assets/js/jquery-3.2.1.min.js"></script>
+    <!--=== Jquery Migrate Min Js ===-->
+    <script src="~/Css/assets/js/jquery-migrate.min.js"></script>
+    <!--=== Popper Min Js ===-->
+    <script src="~/Css/assets/js/popper.min.js"></script>
+    <!--=== Bootstrap Min Js ===-->
+    <script src="~/Css/assets/js/bootstrap.min.js"></script>
+    <!--=== Gijgo Min Js ===-->
+    <script src="~/Css/assets/js/plugins/gijgo.js"></script>
+    <!--=== Vegas Min Js ===-->
+    <script src="~/Css/assets/js/plugins/vegas.min.js"></script>
+    <!--=== Isotope Min Js ===-->
+    <script src="~/Css/assets/js/plugins/isotope.min.js"></script>
+    <!--=== Owl Caousel Min Js ===-->
+    <script src="~/Css/assets/js/plugins/owl.carousel.min.js"></script>
+    <!--=== Waypoint Min Js ===-->
+    <script src="~/Css/assets/js/plugins/waypoints.min.js"></script>
+    <!--=== CounTotop Min Js ===-->
+    <script src="~/Css/assets/js/plugins/counterup.min.js"></script>
+    <!--=== YtPlayer Min Js ===-->
+    <script src="~/Css/assets/js/plugins/mb.YTPlayer.js"></script>
+    <!--=== Magnific Popup Min Js ===-->
+    <script src="~/Css/assets/js/plugins/magnific-popup.min.js"></script>
+    <!--=== Slicknav Min Js ===-->
+    <script src="~/Css/assets/js/plugins/slicknav.min.js"></script>
+
+
+
+    <!--=== Mian Js ===-->
+    <script src="~/Css/assets/js/main.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

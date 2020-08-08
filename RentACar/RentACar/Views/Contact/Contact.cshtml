@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    @if (Session["message"] != null)
+    {
+        if (Session["message"].ToString() == "mail")
+        {
+            <script>
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Mailiniz başarıyla iletilmiştir',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            </script>
+        }
+        else if (Session["message"].ToString() == "error")
+        {
+            <script>
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Mail gönderilirken bir hata oluştu.',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            </script>
+        }
+        Session["message"] = null;
+
+    }
+</head>
+
+<body>
+    <!--== Page Title Area Start ==-->
+    <section id="page-title-area" class="section-padding overlay">
+        <div class="container">
+            <div class="row">
+                <!-- Page Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>İLETİŞİM</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                        <p>Bizi tercih ettiğiniz için teşekkürler...</p>
+                    </div>
+                </div>
+                <!-- Page Title End -->
+            </div>
+        </div>
+    </section>
+    <!--== Page Title Area End ==-->
+    <!--== Contact Page Area Start ==-->
+    <div class="contact-page-wrao section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 m-auto">
+                    <div class="contact-form">
+                        <form method="post" action="@Url.Action("SendEmail","Contact")">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="name-input">
+                                        <input type="text" name="Ad" placeholder="Tam Adınız" autocomplete="off" pattern="[a-zA-ZçÇğĞıİöÖşŞüÜ ]+" title="Sadece harf girebilirsiniz." maxlength="20" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="email-input">
+                                        <input type="email" name="email" placeholder="Email Adresiniz" autocomplete="off" required maxlength="30">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="website-input">
+                                        <input type="url" name="website" placeholder="Websiteniz">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="subject-input">
+                                        <input type="text" name="konu" placeholder="Konu" autocomplete="off" pattern="[A-Za-zçÇğĞıİöÖşŞüÜ0-9.:;?!,/]+" title="Lütfen sadece harf,sayi ve bu özel karakterleri( .,:;?!/ ) kullanabilirsiniz." required maxlength="30">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="message-input">
+                                <textarea name="messagee" cols="30" rows="10" placeholder="Mesajınız" required></textarea>
+                            </div>
+
+                            <div class="input-submit">
+                                <button type="submit">Mesajı Gönder</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Sidebar Area Start -->
+                <div class="col-lg-4">
+                    <div class="sidebar-content-wrap m-t-50">
+                        <!-- Single Sidebar Start -->
+                        <div class="single-sidebar">
+                            <h3>BİLGİ ALMAK İÇİN</h3>
+
+                            <div class="sidebar-body">
+                                <p><i class="fa fa-mobile"></i> (0236) 314 10 10</p>
+                                <p><i class="fa fa-clock-o"></i> 7/24</p>
+                                <p><span style="color:#FFD000">Sirket Adi:</span> HFTTF ARAÇ KİRALAMA</p>
+                                <p><span style="color:#FFD000">Adres:</span> Acarlar, Acarlar Mah. Şehit, Ali Karakuzu Sk. No:10, 45400 Turgutlu/Manisa</p>
+                            </div>
+                        </div>
+                        <!-- Single Sidebar End -->
+                        <!-- Single Sidebar Start -->
+                        <div class="single-sidebar">
+                            <h3>BİZİMLE İLETİŞİME GEÇİN</h3>
+
+                            <div class="sidebar-body">
+                                <div class="social-icons text-center">
+                                    <a href="https://www.instagram.com/hfttf2020/?hl=tr" target="_blank"><i class="fa fa-instagram"></i></a>
+                                    <a href="https://www.facebook.com/hfttf.car" target="_blank"><i class="fa fa-facebook"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Sidebar End -->
+                    </div>
+                </div>
+                <!-- Sidebar Area End -->
+            </div>
+        </div>
+    </div>
+    <!--== Contact Page Area End ==-->
+    <!--== Map Area Start ==-->
+    <div class="maparea">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3122.8190955633963!2d27.704113815297163!3d38.49181607963523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b9a791df45ce87%3A0xe32779b610d2d400!2sHasan%20Ferdi%20Turgutlu%20Teknoloji%20Fak%C3%BCltesi%20-%20%C3%9Cniversitesi!5e0!3m2!1str!2str!4v1576240070470!5m2!1str!2str"></iframe>
+    </div>
+    <!--== Map Area End ==-->
+</body>
+
