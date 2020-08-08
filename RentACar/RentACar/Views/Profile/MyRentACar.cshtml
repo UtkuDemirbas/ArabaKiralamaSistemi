@@ -1,0 +1,108 @@
+﻿@model IEnumerable<RentACar.RentACarWebService.KiralikArac>
+@{
+    ViewBag.Title = "ListAllCar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    @if (Session["message"] != null)
+    {
+        if (Session["message"].ToString() == "rent")
+        {
+            <script>
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'işlem Başarılı',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            </script>
+        }
+        Session["message"] = null;
+    }
+</head>
+<body>
+
+    <section id="page-title-area" class="section-padding overlay">
+        <div class="container">
+            <div class="row">
+                <!-- Page Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>KİRALIK ARAÇLARINIZ</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                        <p>Bizi tercih ettiğiniz için teşekkürler...</p>
+                    </div>
+                </div>
+                <!-- Page Title End -->
+            </div>
+        </div>
+    </section>
+
+    <section id="car-list-area" class="section-padding">
+        <div class="container" id="hata">
+            @Html.ValidationSummary(true, "", new { @class = "border border-danger rounded h-50 p-1 pt-2 mb-2 mt-2 bg-danger text-white text-center" })
+        </div>
+        <div class="container">
+            <div class="row">
+                <!-- Car List Content Start -->
+                <div class="col-lg-12">
+                    <div class="car-details-content">
+                        <div class="row">
+                            <!-- Single Car Start -->
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-lg-6 col-md-6">
+                                    <h2>@item.AracMarka @item.AracModel <span class="price">Kiralama: <b>@Convert.ToInt32(@item.Ucret) TL</b></span></h2>
+                                    <div class="">
+                                        <div class="">
+                                            <img src="@Url.Content(item.Image)" alt="JSOFT">
+                                        </div>
+                                    </div>
+                                    <div class="car-details-info">
+                                        <div class="technical-info">
+
+                                            <div class="tech-info-table">
+                                                <table class="table table-bordered">
+                                                    <tr>
+                                                        <th>Kiralanma Tarihi</th>
+                                                        <td>@item.KiralanmaZamani</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Veriliş Kilometresi</th>
+                                                        <td>@item.VerilisKm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Son Kilometre</th>
+                                                        <td>@item.SonKilometre</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Kaç Günlük Kiraladınız</th>
+                                                        <td>@item.KacGun</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Alış Yeri</th>
+                                                        <td>@item.AlisYeri</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Veriş Yeri</th>
+                                                        <td>@item.VerisYeri</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            <!-- Single Car End -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Car List Content End -->
+            </div>
+        </div>
+    </section>
+</body>
